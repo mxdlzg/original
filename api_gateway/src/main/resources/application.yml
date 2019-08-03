@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8084
+
+#zuul:
+#  routes:
+#    myproject:
+#      path: /myproject/**
+#      serviceId: project
+    #简洁写法
+#    project: /myproject/**
+
+  # 设置全局敏感头
+zuul:
+  sensitive-headers:
+
+security:
+  oauth2:
+    client:
+      access-token-uri: http://localhost:${server.port}/uaa/oauth/token
+      user-authorization-uri: http://localhost:${server.port}/uaa/oauth/authorize
+      client-id: zuul-gateway
+
